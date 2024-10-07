@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 interface Warehouse {
   id: number;
   warehouseName: string;
-  warehouseCode: string;
+  warehouseCity?: any;
+  warehouseState?: any;
   status: string;
 }
 
@@ -21,21 +22,35 @@ interface Warehouse {
   styleUrls: ['./add-wearhouse.component.css']
 })
 export class AddWearhouseComponent implements OnInit {
+  states: any[] = [];
+  citys: any[] = [];
+
 
   id: number | null = null;
   warehouses: Warehouse[] = [];
   // newWarehouse: Warehouse = { };
   warehouseName: any;
-  warehouseCode: any;
+  warehouseCity: any;
   status: any;
   editMode: boolean = false;
   editIndex: number | null = null;
   submitted: boolean = false;
 
+  warehouseState:any;
+
   constructor(public router: Router, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
+    const states = localStorage.getItem('states');
+    if (states) {
+      this.states = JSON.parse(states);
+    }
+    const citys = localStorage.getItem('citys');
+    if (citys) {
+      this.citys = JSON.parse(citys);
+    }
+
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       this.editMode = idParam ? true : false;
@@ -54,7 +69,8 @@ export class AddWearhouseComponent implements OnInit {
     const foundWarehouse = this.warehouses.find(warehouse => warehouse.id === id);
     if (foundWarehouse) {
       this.warehouseName = foundWarehouse.warehouseName;
-      this.warehouseCode = foundWarehouse.warehouseCode;
+      this.warehouseCity = foundWarehouse.warehouseCity;
+      this.warehouseState=foundWarehouse.warehouseState;
       this.status = foundWarehouse.status;
     } else {
       console.warn('Warehouse not found with id:', id);
@@ -68,21 +84,22 @@ export class AddWearhouseComponent implements OnInit {
     }
   }
 
-  warehouseExists(warehouseName: string, warehouseCode: string): boolean {
-    return this.warehouses.some(warehouse => warehouse.warehouseName === warehouseName || warehouse.warehouseCode === warehouseCode);
+  warehouseExists(warehouseName: string, warehouseCity: string): boolean {
+    return this.warehouses.some(warehouse => warehouse.warehouseName === warehouseName || warehouse.warehouseCity === warehouseCity);
   }
 
   addWarehouse() {
     this.submitted = true;
 
-    if (this.editMode && this.warehouseName !== '' && this.warehouseCode !== '' && this.status !== '') {
+    if (this.editMode && this.warehouseName !== '' && this.warehouseCity !== '' && this.status !== '') {
       const warehouseIndex = this.warehouses.findIndex(warehouse => warehouse.id === this.id);
 
       if (warehouseIndex !== -1) {
         this.warehouses[warehouseIndex] = {
           ...this.warehouses[warehouseIndex],
           warehouseName: this.warehouseName,
-          warehouseCode: this.warehouseCode,
+          warehouseCity: this.warehouseCity,
+          warehouseState: this.warehouseState,
           status: this.status
         };
       }
@@ -93,12 +110,12 @@ export class AddWearhouseComponent implements OnInit {
       this.editIndex = null;
       alert('SuccessFully Updated Warehouse!')
       this.router.navigate(['/dashboard/warehouse']);
-    } else if (this.warehouseName && this.warehouseCode) {
-      if (this.warehouseExists(this.warehouseName, this.warehouseCode)) {
+    } else if (this.warehouseName && this.warehouseCity) {
+      if (this.warehouseExists(this.warehouseName, this.warehouseCity)) {
         alert('Warehouse with this name or code already exists!');
         return;
       }
-      const newWarehouse = { id: this.generateId(), warehouseName: this.warehouseName, warehouseCode: this.warehouseCode, status: 'Active' };
+      const newWarehouse = { id: this.generateId(), warehouseName: this.warehouseName, warehouseCity: this.warehouseCity, warehouseState: this.warehouseState, status: 'Active' };
       this.warehouses.push({ ...newWarehouse });
       if (typeof localStorage !== 'undefined') {
         localStorage.setItem('warehouses', JSON.stringify(this.warehouses));

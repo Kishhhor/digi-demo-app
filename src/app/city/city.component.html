@@ -16,6 +16,7 @@
           <th>ID</th>
           <th>City Name</th>
           <th>City Code</th>
+          <th>State</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
@@ -25,6 +26,7 @@
           <td>{{ city.id }}</td>
           <td>{{ city.cityName }}</td>
           <td>{{ city.cityCode }}</td>
+          <td>{{ city.selectedState?.stateName }}</td>
           <td>{{ city.status }}</td>
           <td>
             <button (click)="editCity(city.id)">Edit</button>

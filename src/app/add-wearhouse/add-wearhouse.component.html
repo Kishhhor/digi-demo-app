@@ -8,8 +8,16 @@
         <input type="text" id="warehouseName" [(ngModel)]="warehouseName" name="warehouseName" required>
       </div>
       <div>
-        <label for="warehouseCode">Warehouse Code:</label>
-        <input type="text" id="warehouseCode" [(ngModel)]="warehouseCode" name="warehouseCode" required>
+        <label for="city">City:</label>
+        <select id="city" [(ngModel)]="warehouseCity" name="city">
+          <option *ngFor="let city of citys" [ngValue]="city">{{ city.cityName }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="state">State:</label>
+        <select id="state" [(ngModel)]="warehouseState" name="state">
+          <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName }}</option>
+        </select>
       </div>
       <div *ngIf="editMode">
         <label for="status">Status:</label>

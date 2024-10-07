@@ -10,6 +10,7 @@ interface city {
   id: number;
   cityName: string;
   cityCode: string;
+  selectedState?: any;
   status: string;
 }
 

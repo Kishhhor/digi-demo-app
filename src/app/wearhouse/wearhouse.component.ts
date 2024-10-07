@@ -10,7 +10,8 @@ import { isPlatformBrowser } from '@angular/common';
 interface Warehouse {
   id: number;
   warehouseName: string;
-  warehouseCode: string;
+  warehouseCity?: any;
+  warehouseState?: any;
   status: string;
 }
 
@@ -26,10 +27,12 @@ export class WearhouseComponent implements OnInit {
   [x: string]: any;
   //router: any;
   warehouses: Warehouse[] = [];
-  newWarehouse: Warehouse = { id: 0, warehouseName: '', warehouseCode: '', status: 'Active' };
+  newWarehouse: Warehouse = { id: 0, warehouseName: '', warehouseCity: '', status: 'Active' };
   editMode: boolean = false;
   editIndex: number | null = null;
-  
+  warehouseState:any;
+
+
   constructor(public router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   
@@ -82,7 +85,7 @@ export class WearhouseComponent implements OnInit {
   }
   
   resetForm() {
-    this.newWarehouse = { id: 0, warehouseName: '', warehouseCode: '', status: 'Active' };
+    this.newWarehouse = { id: 0, warehouseName: '', warehouseCity: '', status: 'Active' };
   }
   }
   

@@ -11,6 +11,12 @@
         <label for="cityCode">City Code:</label>
         <input type="text" id="cityCode" [(ngModel)]="cityCode" name="cityCode" required>
       </div>
+      <div>
+        <label for="state">State:</label>
+        <select id="state" [(ngModel)]="selectedState" name="state">
+          <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName }}</option>
+        </select>
+      </div>
       <div *ngIf="editMode">
         <label for="citys">Status:</label>
         <select id="citys" [(ngModel)]="status" name="citys">

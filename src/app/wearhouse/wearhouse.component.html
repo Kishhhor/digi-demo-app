@@ -8,7 +8,8 @@
         <tr>
           <th>ID</th>
           <th>Warehouse Name</th>
-          <th>Warehouse Code</th>
+          <th> City</th>
+          <th>State</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
@@ -17,7 +18,8 @@
         <tr *ngFor="let warehouse of warehouses; let i = index">
           <td>{{ warehouse?.id }}</td>
           <td>{{ warehouse?.warehouseName }}</td>
-          <td>{{ warehouse?.warehouseCode }}</td>
+          <td>{{ warehouse?.warehouseCity?.cityName }}</td>
+          <td>{{ warehouse?.warehouseState?.stateName }}</td>
           <td>{{ warehouse?.status }}</td>
           <td>
             <button (click)="editWarehouse(warehouse.id)">Edit</button>
