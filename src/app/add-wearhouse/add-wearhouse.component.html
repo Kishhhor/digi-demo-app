@@ -1,34 +1,42 @@
-<div class="form-container">
-    <!-- <h2>Add Warehouse</h2> -->
+<div class="outer-container">
+  <div class="form-container">
     <h2>{{ editMode ? 'Edit Warehouse' : 'Add Warehouse' }}</h2>
-  
+
     <form (ngSubmit)="addWarehouse()">
-      <div>
-        <label for="warehouseName">Warehouse Name:</label>
-        <input type="text" id="warehouseName" [(ngModel)]="warehouseName" name="warehouseName" required>
+      <!-- Updated form group to have Warehouse Name, City, State, and Status in one row -->
+      <div class="form-group">
+        <div class="input-container">
+          <label for="warehouseName">Warehouse Name:</label>
+          <input type="text" id="warehouseName" [(ngModel)]="warehouseName" name="warehouseName" required class="warehouse-input">
+        </div>
+
+        <div class="input-container">
+          <label for="city">City:</label>
+          <select id="city" [(ngModel)]="warehouseCity" name="city" class="warehouse-input">
+            <option *ngFor="let city of citys" [ngValue]="city">{{ city.cityName }}</option>
+          </select>
+        </div>
+
+        <div class="input-container">
+          <label for="state">State:</label>
+          <select id="state" [(ngModel)]="warehouseState" name="state" class="warehouse-input">
+            <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName }}</option>
+          </select>
+        </div>
+
+        <div class="input-container" *ngIf="editMode">
+          <label for="status">Status:</label>
+          <select id="status" [(ngModel)]="status" name="status" class="warehouse-input">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <label for="city">City:</label>
-        <select id="city" [(ngModel)]="warehouseCity" name="city">
-          <option *ngFor="let city of citys" [ngValue]="city">{{ city.cityName }}</option>
-        </select>
-      </div>
-      <div>
-        <label for="state">State:</label>
-        <select id="state" [(ngModel)]="warehouseState" name="state">
-          <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName }}</option>
-        </select>
-      </div>
-      <div *ngIf="editMode">
-        <label for="status">Status:</label>
-        <select id="status" [(ngModel)]="status" name="status">
-          <option value="Active">Active</option>
-          <option value="Inactive">Inactive</option>
-        </select>
-      </div>
-      <div>
-        <button type="submit">Save</button>
-        <button type="button" (click)="router.navigate(['/dashboard/warehouse'])">Cancel</button>
+
+      <div class="button-group">
+        <button type="button" class="cancel-button" (click)="router.navigate(['/dashboard/warehouse'])">Cancel</button>
+        <button type="submit" class="save-button">Save</button>
       </div>
     </form>
   </div>
+</div>

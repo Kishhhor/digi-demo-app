@@ -1,11 +1,17 @@
 <div class="dashboard-container">
-    <div class="navbar">
-      <div class="logo">My Logo</div>
-      <div class="user-icons">
-        <button class="logout-button" (click)="logout()">Logout</button>
-      </div>
+  <div class="navbar" style="background-color: #662671; height: 104px;">
+    <div class="logo">
+      <img src="https://s3-alpha-sig.figma.com/img/03e2/9685/10d4ea293d7a14946d8bd331c5e5055f?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NZHDFzDjfUe1uhBZcgVJbZ3~mL3SO2kIPXIBhN6lZs5nF5ZoOA8FftgFZ-tmz4Ghw-SliWmIfv6g26FaanZFHiXxhH1Z68gXNYd2sNT6xtxS--KoPGqax4AdVTUmf~Lhjc5sBb-l6yjhMEx4o50IoBkmS8y3QYbhtDagD8ad88skP6jzXE-fFgF5Easd6WE3DHN9bsaSAWQcUklMVQMwFfeHd2m1Uq01cJxBRtFTiEZBZ3f25YyQlGs-3AwMJR934mEm08R-MzZhteLCRDjbb81o5gjngVRyKA5LdB6-9vkvlDG0H44xoRLZiKAuzL5YwiS5CkKZG-540BA8hx9~dQ__"
+        style="width: 296px; height: 46px;" alt="logo">
     </div>
-  
+    <div class="user-icons">
+      <button class="logout-button" (click)="logout()" style="display: flex; align-items: center;">
+        Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-body">
     <div class="sidebar">
       <ul>
         <li (click)="router.navigate(['/dashboard/home'])">Home</li>
@@ -14,22 +20,21 @@
         <li (click)="router.navigate(['/dashboard/warehouse'])">Warehouse</li>
       </ul>
     </div>
-  
+
+    <!-- Content section where the home component will be rendered -->
     <div class="content">
       <router-outlet></router-outlet>
     </div>
-    
-    <div *ngIf="showLogoutModal" class="modal">
-        <div class="modal-content">
-          <h2>Are you sure you want to Logout?</h2>
-          <div class="modal-buttons">
-            <button (click)="confirmLogout()">Confirm</button>
-            <button (click)="stayOnPage()">Delete</button>
-          </div>
-        </div>
-      </div>
-
-
   </div>
-  
 
+  <!-- Logout confirmation modal -->
+  <div *ngIf="showLogoutModal" class="modal">
+    <div class="modal-content">
+      <h2>Are you sure you want to Logout?</h2>
+      <div class="modal-buttons">
+        <button (click)="confirmLogout()">Confirm</button>
+        <button (click)="stayOnPage()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

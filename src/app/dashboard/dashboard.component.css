@@ -1,104 +1,98 @@
+/* Container for the whole dashboard */
 .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .user-icons {
-    display: flex;
-  }
-  
-  .logout-button {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .logout-button:hover {
-    background-color: #ff1a1a;
-  }
-  
-  .sidebar {
-    width: 200px;
-    background-color: #f1f1f1;
-    padding: 15px;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar li:hover {
-    background-color: #e2e2e2;
-  }
-  
-  .content {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-  }
-  
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .modal-buttons {
-    margin-top: 20px;
-  }
-  
-  .modal-buttons button {
-    margin: 0 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .modal-buttons button:hover {
-    background-color: #007bff;
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Navbar at the top */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #662671;
+  height: 104px;
+}
+
+.logo img {
+  width: 296px;
+  height: 46px;
+}
+
+/* Body containing sidebar and content */
+.dashboard-body {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Sidebar with navigation */
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  height: calc(100vh - 104px); /* Remaining height after navbar */
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 15px 0;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+.sidebar li:hover {
+  background-color: #ddd;
+}
+
+/* Content area */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  height: calc(100vh - 104px);
+  overflow-y: auto; /* Ensure content is scrollable */
+}
+
+/* Modal for Logout confirmation */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+}
+
+.modal-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  background-color: #662671;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-buttons button:last-child {
+  background-color: #ccc;
+}

@@ -1,41 +1,36 @@
-
-
-
-
-
-<!-- <router-outlet></router-outlet> -->
-
-<div class="state-container">
-    <h1>City Management</h1>
-    
-   <button (click)="router.navigate(['/dashboard/addcity'])">Add City</button>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>City Name</th>
-          <th>City Code</th>
-          <th>State</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let city of citys; let i = index">
-          <td>{{ city.id }}</td>
-          <td>{{ city.cityName }}</td>
-          <td>{{ city.cityCode }}</td>
-          <td>{{ city.selectedState?.stateName }}</td>
-          <td>{{ city.status }}</td>
-          <td>
-            <button (click)="editCity(city.id)">Edit</button>
-            <button (click)="deleteCity(i)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="city-container">
+  <div class="header">
+    <div class="logo">
+      <!-- <img src="path/to/city-logo.png" alt="City Logo" /> -->
+       City
+    </div>
+    <input type="text" placeholder="Search..." class="search-box" />
+    <button class="add-city-button" (click)="router.navigate(['/dashboard/addcity'])">Add City</button>
   </div>
-  
 
-
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>City Name</th>
+        <th>City Code</th>
+        <th>State</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of citys; let i = index" [ngStyle]="{'background-color': i % 2 === 0 ? '#F2F2F2' : '#FFFFFF'}">
+        <td>{{ city.id }}</td>
+        <td>{{ city.cityName }}</td>
+        <td>{{ city.cityCode }}</td>
+        <td>{{ city.selectedState?.stateName }}</td>
+        <td [ngStyle]="{'color': city.status === 'active' ? 'green' : 'red'}">{{ city.status }}</td>
+        <td>
+          <button (click)="editCity(city.id)">Edit</button>
+          <button (click)="deleteCity(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

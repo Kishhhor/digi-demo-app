@@ -1,26 +1,33 @@
-<div class="form-container">
-  <!-- <h2>Add State</h2> -->
-  <h2>{{ editMode ? 'Edit State' : 'Add State' }}</h2>
+<div class="outer-container">
+  <div class="form-container">
+    <h2>{{ editMode ? 'Edit State' : 'Add State' }}</h2>
 
-  <form (ngSubmit)="addState()">
-    <div>
-      <label for="stateName">State Name:</label>
-      <input type="text" id="stateName" [(ngModel)]="stateName" name="stateName" required>
-    </div>
-    <div>
-      <label for="stateCode">State Code:</label>
-      <input type="text" id="stateCode" [(ngModel)]="stateCode" name="stateCode" required>
-    </div>
-    <div *ngIf="editMode">
-      <label for="status">Status:</label>
-      <select id="status" [(ngModel)]="status" name="status">
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-      </select>
-    </div>
-    <div>
-      <button type="submit">Save</button>
-      <button type="button" (click)="router.navigate(['/dashboard/state'])">Cancel</button>
-    </div>
-  </form>
+    <form (ngSubmit)="addState()">
+      <!-- Updated form group to have State Name, State Code, and Status in one row -->
+      <div class="form-group">
+        <div class="input-container">
+          <label for="stateName">State Name:</label>
+          <input type="text" id="stateName" [(ngModel)]="stateName" name="stateName" required class="state-input">
+        </div>
+
+        <div class="input-container">
+          <label for="stateCode">State Code:</label>
+          <input type="text" id="stateCode" [(ngModel)]="stateCode" name="stateCode" required class="state-input">
+        </div>
+
+        <div class="input-container" *ngIf="editMode">
+          <label for="status">Status:</label>
+          <select id="status" [(ngModel)]="status" name="status" class="state-input">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="cancel-button" (click)="router.navigate(['/dashboard/state'])">Cancel</button>
+        <button type="submit" class="save-button">Save</button>
+      </div>
+    </form>
+  </div>
 </div>

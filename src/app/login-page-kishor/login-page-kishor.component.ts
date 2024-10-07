@@ -44,13 +44,14 @@ export class LoginPageKishorComponent {
 
   // Function to open the forgot password modal
   openForgotPassword() {
-   
+   // console.log("forgote password works");
     this.showForgotPasswordModal = true;
+    
      }
 
   // Function to handle the reset password action
   resetPassword() {
-    // Handle password reset logic here (e.g., send email)
+   
     alert(`Password reset link sent to ${this.email}`);
     this.showForgotPasswordModal = false; // Close modal after reset
   }

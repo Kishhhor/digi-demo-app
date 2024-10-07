@@ -1,32 +1,40 @@
-<div class="form-container">
-    <!-- <h2>Add State</h2> -->
+<div class="outer-container">
+  <div class="form-container">
     <h2>{{ editMode ? 'Edit City' : 'Add City' }}</h2>
-  
+
     <form (ngSubmit)="addCity()">
-      <div>
-        <label for="cityName">City Name:</label>
-        <input type="text" id="cityName" [(ngModel)]="cityName" name="cityName" required>
+      <!-- Updated form group to have City Name, City Code, and State in one row -->
+      <div class="form-group">
+        <div class="input-container">
+          <label for="cityName">City Name:</label>
+          <input type="text" id="cityName" [(ngModel)]="cityName" name="cityName" required class="city-input">
+        </div>
+
+        <div class="input-container">
+          <label for="cityCode">City Code:</label>
+          <input type="text" id="cityCode" [(ngModel)]="cityCode" name="cityCode" required class="city-input">
+        </div>
+
+        <div class="input-container">
+          <label for="state">State:</label>
+          <select id="state" [(ngModel)]="selectedState" name="state" class="city-input">
+            <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName }}</option>
+          </select>
+        </div>
+
+        <div class="input-container" *ngIf="editMode">
+          <label for="status">Status:</label>
+          <select id="status" [(ngModel)]="status" name="status" class="city-input">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <label for="cityCode">City Code:</label>
-        <input type="text" id="cityCode" [(ngModel)]="cityCode" name="cityCode" required>
-      </div>
-      <div>
-        <label for="state">State:</label>
-        <select id="state" [(ngModel)]="selectedState" name="state">
-          <option *ngFor="let state of states" [ngValue]="state">{{ state.stateName }}</option>
-        </select>
-      </div>
-      <div *ngIf="editMode">
-        <label for="citys">Status:</label>
-        <select id="citys" [(ngModel)]="status" name="citys">
-          <option value="Active">Active</option>
-          <option value="Inactive">Inactive</option>
-        </select>
-      </div>
-      <div>
-        <button type="submit">Save</button>
-        <button type="button" (click)="router.navigate(['/dashboard/city'])">Cancel</button>
+
+      <div class="button-group">
+        <button type="button" class="cancel-button" (click)="router.navigate(['/dashboard/city'])">Cancel</button>
+        <button type="submit" class="save-button">Save</button>
       </div>
     </form>
   </div>
+</div>

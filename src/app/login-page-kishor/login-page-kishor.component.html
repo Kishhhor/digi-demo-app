@@ -1,25 +1,32 @@
-<div class="login-container">
+<div class="login-container" style="background-image: url('https://s3-alpha-sig.figma.com/img/8cbc/dedb/796c610da3f6d8b59a11e9447c30c3c0?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=dCxHD8Ac2Dfu9zDnI-vD5PxuttjHsPsIZfNe9XejXIOyWtVPOmakCUKuWwGlr3jz2w5QQ44R9cxNu-SkIqxqATA22OB9NaaYBuz-7uj46vDI~KprWnRgYjAonKojdQKWfANkqSdrECapwaQo0EBpYWrkV3zf~09YI6AibiHq1GapoqQSuR4JrmOiGExsdLsILdRtpbEmH1AbliclKfqxHD5pGpKwYHPPqfMSFeHqq3GgEChtJ0hY7FOg1GpaKiBkcDpcidPZOMaY1pLaEegvaXIBoHUHC8AEkgb-3GtRkW-LtyLpq61egWfTMnKR03RieIldr2PpqgUZY415BeJNmw__');">
+  <div class="content-container">
+    <div class="logo">
+      <img src="https://s3-alpha-sig.figma.com/img/d761/c44f/321741d69c0a3f8dee89b594a0a71974?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iF5i44V8yC9Ii32R18WB7X8gBrWToHLaCp2zZ5ixNQCstYq1veaTjhYEvERZFgaQfPDe-7p-M02meGJtyc6uolpjCCgAE0GrXC0TQhh3QCIHdiod-7~eDQwQFTW4PTc3DpMHvF8NgoQFA8zoFla0oAIULCQVZxez1Jf98Lj8ki188Dfe41cD6KYYNq8oHSHwYinCvWE0PKXtCyy2gOx4d0~SOmGWNQNhWQF2CUxVuTjAKKELOUu-hOsgiyuXGQZhYjkZRfVNdxcwlN6ucBHuxOoxzSDHzI53dgI-lICWwy4bf4gaJpk7qvR5QmMnucpiQd~8E0-Cl7MYrWLvZynfuQ__" alt="logo">
+    </div>
+    <h1>Welcome to Digitalflake Admin</h1>
+
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div>
         <label for="username">Email</label>
         <input type="text" id="username" placeholder="Username" formControlName="username" required>
       </div>
-  
+
       <div>
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Password" formControlName="password" required>
       </div>
-  
-      <p *ngIf="error" class="error">
-        {{ error }}
-      </p>
-  
+
+      <div class="forgot-password-container">
+        <a href="#" (click)="openForgotPassword()" class="forgot-password-link">Forgot Password?</a>
+      </div>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+
       <div class="button">
         <button type="submit">Login</button>
-        <a href="#" (click)="openForgotPassword()" class="forgot-password-link">Forgot Password?</a> <!-- Change button to link -->
       </div>
     </form>
-  
+
     <!-- Forgot Password Modal -->
     <div *ngIf="showForgotPasswordModal" class="modal">
       <h2>Reset Password</h2>
@@ -27,8 +34,8 @@
       <input type="email" [(ngModel)]="email" placeholder="Email" />
       <div>
         <button (click)="resetPassword()">Reset Password</button>
-        <a href="#" (click)="showForgotPasswordModal = false">Back to Login</a> <!-- Change button to link -->
+        <a href="#" (click)="showForgotPasswordModal = false">Back to Login</a>
       </div>
     </div>
   </div>
-  
+</div>
