@@ -1,0 +1,26 @@
+<div class="form-container">
+    <!-- <h2>Add Warehouse</h2> -->
+    <h2>{{ editMode ? 'Edit Warehouse' : 'Add Warehouse' }}</h2>
+  
+    <form (ngSubmit)="addWarehouse()">
+      <div>
+        <label for="warehouseName">Warehouse Name:</label>
+        <input type="text" id="warehouseName" [(ngModel)]="warehouseName" name="warehouseName" required>
+      </div>
+      <div>
+        <label for="warehouseCode">Warehouse Code:</label>
+        <input type="text" id="warehouseCode" [(ngModel)]="warehouseCode" name="warehouseCode" required>
+      </div>
+      <div *ngIf="editMode">
+        <label for="status">Status:</label>
+        <select id="status" [(ngModel)]="status" name="status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">Save</button>
+        <button type="button" (click)="router.navigate(['/dashboard/warehouse'])">Cancel</button>
+      </div>
+    </form>
+  </div>

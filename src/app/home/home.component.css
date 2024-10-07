@@ -1,0 +1,14 @@
+.home-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text */
+}
+
+img {
+    max-width: 80%; /* Limit image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space between image and text */
+}

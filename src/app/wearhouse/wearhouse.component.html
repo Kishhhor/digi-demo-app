@@ -1,0 +1,32 @@
+<div class="state-container">
+    <h1>Wearhouse Management</h1>
+    
+   <button (click)="router.navigate(['/dashboard/addwarehouse'])">Add Warehouse</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Warehouse Name</th>
+          <th>Warehouse Code</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let warehouse of warehouses; let i = index">
+          <td>{{ warehouse?.id }}</td>
+          <td>{{ warehouse?.warehouseName }}</td>
+          <td>{{ warehouse?.warehouseCode }}</td>
+          <td>{{ warehouse?.status }}</td>
+          <td>
+            <button (click)="editWarehouse(warehouse.id)">Edit</button>
+            <button (click)="deleteWarehouse(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+

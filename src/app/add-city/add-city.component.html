@@ -1,0 +1,26 @@
+<div class="form-container">
+    <!-- <h2>Add State</h2> -->
+    <h2>{{ editMode ? 'Edit City' : 'Add City' }}</h2>
+  
+    <form (ngSubmit)="addCity()">
+      <div>
+        <label for="cityName">City Name:</label>
+        <input type="text" id="cityName" [(ngModel)]="cityName" name="cityName" required>
+      </div>
+      <div>
+        <label for="cityCode">City Code:</label>
+        <input type="text" id="cityCode" [(ngModel)]="cityCode" name="cityCode" required>
+      </div>
+      <div *ngIf="editMode">
+        <label for="citys">Status:</label>
+        <select id="citys" [(ngModel)]="status" name="citys">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">Save</button>
+        <button type="button" (click)="router.navigate(['/dashboard/city'])">Cancel</button>
+      </div>
+    </form>
+  </div>

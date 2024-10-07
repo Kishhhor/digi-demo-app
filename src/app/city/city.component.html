@@ -1,0 +1,39 @@
+
+
+
+
+
+<!-- <router-outlet></router-outlet> -->
+
+<div class="state-container">
+    <h1>City Management</h1>
+    
+   <button (click)="router.navigate(['/dashboard/addcity'])">Add City</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>City Name</th>
+          <th>City Code</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let city of citys; let i = index">
+          <td>{{ city.id }}</td>
+          <td>{{ city.cityName }}</td>
+          <td>{{ city.cityCode }}</td>
+          <td>{{ city.status }}</td>
+          <td>
+            <button (click)="editCity(city.id)">Edit</button>
+            <button (click)="deleteCity(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+

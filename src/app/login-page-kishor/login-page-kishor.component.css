@@ -1,0 +1,25 @@
+.forgot-password-link {
+    color: blue; /* Change the link color */
+    cursor: pointer; /* Change cursor to pointer */
+    text-decoration: underline; /* Underline the link */
+  }
+  
+  .forgot-password-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+  }
+  
+  .modal input {
+    margin-bottom: 10px;
+  }
+  

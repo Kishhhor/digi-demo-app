@@ -1,0 +1,38 @@
+<h2>state working</h2>
+
+
+
+
+<!-- <router-outlet></router-outlet> -->
+
+<div class="state-container">
+    <h1>States Management</h1>
+    
+   <button (click)="router.navigate(['/dashboard/addstate'])">Add State</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>State Name</th>
+          <th>State Code</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let state of states; let i = index">
+          <td>{{ state.id }}</td>
+          <td>{{ state.stateName }}</td>
+          <td>{{ state.stateCode }}</td>
+          <td>{{ state.status }}</td>
+          <td>
+            <button (click)="editState(state.id)">Edit</button>
+            <button (click)="deleteState(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+

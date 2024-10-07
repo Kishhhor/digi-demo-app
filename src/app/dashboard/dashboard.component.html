@@ -1,0 +1,35 @@
+<div class="dashboard-container">
+    <div class="navbar">
+      <div class="logo">My Logo</div>
+      <div class="user-icons">
+        <button class="logout-button" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  
+    <div class="sidebar">
+      <ul>
+        <li (click)="router.navigate(['/dashboard/home'])">Home</li>
+        <li (click)="router.navigate(['/dashboard/state'])">State</li>
+        <li (click)="router.navigate(['/dashboard/city'])">City</li>
+        <li (click)="router.navigate(['/dashboard/warehouse'])">Warehouse</li>
+      </ul>
+    </div>
+  
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    
+    <div *ngIf="showLogoutModal" class="modal">
+        <div class="modal-content">
+          <h2>Are you sure you want to Logout?</h2>
+          <div class="modal-buttons">
+            <button (click)="confirmLogout()">Confirm</button>
+            <button (click)="stayOnPage()">Delete</button>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+  
+

@@ -1,0 +1,26 @@
+<div class="form-container">
+  <!-- <h2>Add State</h2> -->
+  <h2>{{ editMode ? 'Edit State' : 'Add State' }}</h2>
+
+  <form (ngSubmit)="addState()">
+    <div>
+      <label for="stateName">State Name:</label>
+      <input type="text" id="stateName" [(ngModel)]="stateName" name="stateName" required>
+    </div>
+    <div>
+      <label for="stateCode">State Code:</label>
+      <input type="text" id="stateCode" [(ngModel)]="stateCode" name="stateCode" required>
+    </div>
+    <div *ngIf="editMode">
+      <label for="status">Status:</label>
+      <select id="status" [(ngModel)]="status" name="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Save</button>
+      <button type="button" (click)="router.navigate(['/dashboard/state'])">Cancel</button>
+    </div>
+  </form>
+</div>
